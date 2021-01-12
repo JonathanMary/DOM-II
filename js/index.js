@@ -16,28 +16,12 @@ body.addEventListener("wheel", event => {
     welcome.style.color = "red";
     welcome.style.backgroundColor = "yellow";
 });
-/*
-let busImage = document.querySelector(".intro > img");
-busImage.setAttribute("draggable", "true");
-busImage.setAttribute("ondragstart", "drag(event)");
-//console.log(busImage);
-
-let mapImage = document.querySelectorAll(".img-content > img")[0];
-
-let imageContent = document.querySelector(".img-content");
-imageContent.setAttribute("ondrop", "drop(event)");
-
-imageContent.setAttribute("ondragover", event => mapImage.setAttribute("src","fun-busImage.jpg"));
-//console.log(imageContent);
-*/
 
 let textContent = document.querySelectorAll(".text-content > h2");
 textContent[0].setAttribute("draggable", "true");
 textContent[0].addEventListener("dragstart", event => textContent[0].textContent = "PUT ME DOWN!!");
 textContent[0].addEventListener("dragend", event => textContent[0].textContent = "Let's Go!");
 
-
-console.log(textContent);
 
 document.addEventListener("keydown", event => document.querySelector("h1").innerText = `Key ${event.key} pressed!`);
 window.addEventListener("offline", event => alert("You are disconnected."));
