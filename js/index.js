@@ -1,6 +1,10 @@
 // Your code goes here
 //Task 2: Create listeners for 10 types of events
 const navLinks = document.querySelectorAll(".nav > a");
+Array.from(navLinks).forEach(nav => {
+    nav.addEventListener("click", event => event.preventDefault());
+});
+
 navLinks[0].addEventListener("mouseover", event => navLinks[0].innerHTML = "We...");
 navLinks[0].addEventListener("mouseout", event => navLinks[0].innerText = "Home");
 navLinks[1].addEventListener("mouseover", event => navLinks[1].innerHTML = "Are, uh");
@@ -20,7 +24,7 @@ body.addEventListener("wheel", event => {
 let textContent = document.querySelectorAll(".text-content > h2");
 textContent[0].setAttribute("draggable", "true");
 textContent[0].addEventListener("dragstart", event => textContent[0].textContent = "PUT ME DOWN!!");
-textContent[0].addEventListener("dragend", event => textContent[0].textContent = "Let's Go!");
+textContent[0].addEventListener("dragend", event => textContent[0].textContent = "Thank You...");
 
 
 document.addEventListener("keydown", event => document.querySelector("h1").innerText = `Key ${event.key} pressed!`);
@@ -31,3 +35,12 @@ const bottomButtons = document.querySelectorAll(".btn");
 bottomButtons[0].addEventListener("dblclick", event => bottomButtons[1].style.backgroundColor = "black");
 bottomButtons[1].addEventListener("dblclick", event => bottomButtons[2].style.backgroundColor = "red");
 bottomButtons[2].addEventListener("dblclick", event => bottomButtons[0].style.backgroundColor = "purple");
+
+//Nest two similar events somewhere in the site and prevent the event propagation properly. Remember not all event types bubble.
+const header = document.querySelector("header");
+header.addEventListener("click", event => header.style.backgroundColor = "red");
+const hOne = document.querySelector("h1");
+hOne.addEventListener("click", event => {
+    hOne.style.backgroundColor = "blue";
+    event.stopPropagation();
+});
