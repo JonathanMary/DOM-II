@@ -10,8 +10,8 @@ navLinks[2].addEventListener("mouseout", event => navLinks[2].innerText = "Blog"
 navLinks[3].addEventListener("mouseover", event => navLinks[3].innerHTML = "Useless");
 navLinks[3].addEventListener("mouseout", event => navLinks[3].innerText = "Contact");
 const welcome = document.querySelector(".intro h2");
-const intro = document.querySelector(".intro");
-intro.addEventListener("wheel", event => {
+const body = document.querySelector("body");
+body.addEventListener("wheel", event => {
     welcome.innerText = "YOU BETTER READ THE WHOLE DAMN THING!"
     welcome.style.color = "red";
     welcome.style.backgroundColor = "yellow";
@@ -20,26 +20,24 @@ intro.addEventListener("wheel", event => {
 let busImage = document.querySelector(".intro > img");
 busImage.setAttribute("draggable", "true");
 busImage.setAttribute("ondragstart", "drag(event)");
-busImage.setAttribute("id", "drag1");
-console.log(busImage);
+//console.log(busImage);
+
 let mapImage = document.querySelectorAll(".img-content > img")[0];
+
 let imageContent = document.querySelector(".img-content");
 imageContent.setAttribute("ondrop", "drop(event)");
-imageContent.setAttribute("ondragover", "allowDrop(event)");
-console.log(imageContent);
 
-function allowDrop(ev) {
-    ev.preventDefault();
-}
-function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
-}
-function drop(ev) {
-    ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(data));
-}
+imageContent.setAttribute("ondragover", event => mapImage.setAttribute("src","fun-busImage.jpg"));
+//console.log(imageContent);
 */
+
+let textContent = document.querySelectorAll(".text-content > h2");
+textContent[0].setAttribute("draggable", "true");
+textContent[0].addEventListener("dragstart", event => textContent[0].textContent = "PUT ME DOWN!!");
+textContent[0].addEventListener("dragend", event => textContent[0].textContent = "Let's Go!");
+
+
+console.log(textContent);
 
 document.addEventListener("keydown", event => document.querySelector("h1").innerText = `Key ${event.key} pressed!`);
 window.addEventListener("offline", event => alert("You are disconnected."));
